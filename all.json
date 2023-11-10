@@ -1,0 +1,175 @@
+{
+    "_links": {
+        "self": {
+            "href": "/product"
+        }
+    },
+    "id": "HZ2074",
+    "name": "Arsenal DNA Sweat Pants",
+    "color": "Collegiate Navy",
+    "modelId": "DLO29",
+    "price": 70,
+    "salePrice": 70,
+    "link": "/arsenal-dna-sweat-pants/HZ2074.html",
+    "isFlash": false,
+    "badgeStyle": "",
+    "badgeText": "",
+    "image": {
+        "src": "https: //assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/9502727e661a4e2086aeb8d715ba5a28_9366/arsenal-dna-sweat-pants.jpg",
+        "cloudinary": true
+    },
+    "secondImage": {
+        "src": "https://assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/ac69a660d2a2443c948308d8e2ed88e8_9366/arsenal-dna-sweat-pants.jpg",
+        "cloudinary": true
+    },
+    "isSpecialLaunch": false,
+    "specialLaunchType": "NONE",
+    "orderable": true,
+    "events": [],
+    "isFinalSale": false,
+    "pdpImage": {
+        "src": "https://assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/9502727e661a4e2086aeb8d715ba5a28_9366/arsenal-dna-sweat-pants.jpg",
+        "cloudinary": true
+    },
+    "images": [
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/9502727e661a4e2086aeb8d715ba5a28_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_21_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp",
+                    "plp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Standard View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "0",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "93 cm",
+                        "modelWaist": "75 cm",
+                        "productSize": "50",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https: //assets.adidas.com/images/w_600,f_auto,q_auto/ac69a660d2a2443c948308d8e2ed88e8_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_23_hover_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp",
+                    "plp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Back View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "1",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "93 cm",
+                        "modelWaist": "75 cm",
+                        "productSize": "50",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https: //assets.adidas.com/images/w_600,f_auto,q_auto/315bb5b05462426ebd00f19f9df8da06_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_25_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Walking View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "2",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "93 cm",
+                        "modelWaist": "75 cm",
+                        "productSize": "50",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https: //assets.adidas.com/images/w_600,f_auto,q_auto/dec141345a8144aba774db2fedd5d26e_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_01_laydown.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "3D Torso",
+                "view": "Front Center View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "3",
+                "subjects": [
+                    {
+                        "productSize": "50"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https: //assets.adidas.com/images/w_600,f_auto,q_auto/edf3af598ddd41f4a57a0b1d1730ce71_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_41_detail.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Detail View 1",
+                "usageTerms": "eCommerce",
+                "sortOrder": "4",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "93 cm",
+                        "modelWaist": "75 cm",
+                        "productSize": "50",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https: //assets.adidas.com/images/w_600,f_auto,q_auto/b477df41bd8e4103982e3a76832c0158_9366/Arsenal_DNA_Sweat_Pants_Blue_HZ2074_42_detail.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Detail View 2",
+                "usageTerms": "eCommerce",
+                "sortOrder": "5",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "93 cm",
+                        "modelWaist": "75 cm",
+                        "productSize": "50",
+                        "gender": "male"
+                    }
+                ]
+            }
+        }
+    ],
+    "gender": "M",
+    "closure": [],
+    "ecomTechnologies": []
+}
