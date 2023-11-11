@@ -1,0 +1,220 @@
+{
+    "_links": {
+        "self": {
+            "href": "/product"
+        }
+    },
+    "id": "HS9896",
+    "name": "Italy 23 Away Jersey",
+    "color": "Off White",
+    "modelId": "MIL77",
+    "price": 100,
+    "salePrice": 100,
+    "link": "/italy-23-away-jersey/HS9896.html",
+    "isFlash": false,
+    "badgeStyle": "",
+    "badgeText": "",
+    "image": {
+        "src": "https://assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/2f9416c47cf34b1a87bcaf6d00c8c490_9366/italy-23-away-jersey.jpg",
+        "cloudinary": true
+    },
+    "secondImage": {
+        "src": "https://assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/0f6fc9c9ef6540cca51faf6d00c8da8e_9366/italy-23-away-jersey.jpg",
+        "cloudinary": true
+    },
+    "isSpecialLaunch": false,
+    "specialLaunchType": "NONE",
+    "orderable": true,
+    "events": [],
+    "isFinalSale": false,
+    "pdpImage": {
+        "src": "https://assets.adidas.com/images/w_280,h_280,f_auto,q_auto:sensitive/4bf9c3df3e9943eb9717af6d00c8cf77_9366/italy-23-away-jersey.jpg",
+        "cloudinary": true
+    },
+    "images": [
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/2f9416c47cf34b1a87bcaf6d00c8c490_9366/Italy_23_Away_Jersey_White_HS9896_000_plp_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "plp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Front View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "0",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/4bf9c3df3e9943eb9717af6d00c8cf77_9366/Italy_23_Away_Jersey_White_HS9896_21_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Standard View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "1",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/0f6fc9c9ef6540cca51faf6d00c8da8e_9366/Italy_23_Away_Jersey_White_HS9896_23_hover_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp",
+                    "plp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Back View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "2",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/507c158ec9b040a3a212af6d00c8e4d8_9366/Italy_23_Away_Jersey_White_HS9896_25_model.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Walking View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "3",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/315291a061b14a30a942af6d00c91521_9366/Italy_23_Away_Jersey_White_HS9896_01_laydown.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "3D Torso",
+                "view": "Front Center View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "4",
+                "subjects": [
+                    {
+                        "productSize": "M"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/4000a3a98e3540b09d30af6d00c91ca9_9366/Italy_23_Away_Jersey_White_HS9896_02_laydown.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "3D Torso",
+                "view": "Back Center View",
+                "usageTerms": "eCommerce",
+                "sortOrder": "5",
+                "subjects": [
+                    {
+                        "productSize": "M"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/62071a0294be43a68888af6d00c8f3b4_9366/Italy_23_Away_Jersey_White_HS9896_41_detail.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Detail View 1",
+                "usageTerms": "eCommerce",
+                "sortOrder": "6",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        },
+        {
+            "cloudinary": true,
+            "src": "https://assets.adidas.com/images/w_600,f_auto,q_auto/eeff8672db294ea6a1bdaf6d00c9029c_9366/Italy_23_Away_Jersey_White_HS9896_42_detail.jpg",
+            "metadata": {
+                "assetUsage": [
+                    "pdp"
+                ],
+                "assetCategory": "Photography",
+                "imageStyle": "On Model",
+                "view": "Detail View 2",
+                "usageTerms": "eCommerce",
+                "sortOrder": "7",
+                "subjects": [
+                    {
+                        "modelHeight": "188 cm",
+                        "modelChest": "103 cm",
+                        "modelWaist": "82 cm",
+                        "productSize": "M",
+                        "gender": "male"
+                    }
+                ]
+            }
+        }
+    ],
+    "gender": "M",
+    "closure": [],
+    "ecomTechnologies": [
+        "AEROREADY",
+        "CLIMACHILL",
+        "CLIMALITE"
+    ]
+}

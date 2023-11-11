@@ -1,7 +1,11 @@
+import json
+
 import scrapy
 from scrapy.exceptions import CloseSpider
 
 
+# This is useful
+# https://docs.scrapy.org/en/latest/intro/tutorial.html
 class AdidasSpider(scrapy.Spider):
     name = "adidas"
     allowed_domains = ["www.adidas.ch"]
@@ -23,12 +27,6 @@ class AdidasSpider(scrapy.Spider):
 
     def parse_second_level(self, response):
         id_item = response.meta.get("id_item")
-        f = open("all_ids.txt", "a")
 
-        f.write(id_item)
-        f.write("\n")
-
-        # this gives us a json file
-        # response.json or response.text
-
-        pass
+        with open("adidas_content_example.json", "w+") as f:
+            json.dump(response.json(), f)
