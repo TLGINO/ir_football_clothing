@@ -1,0 +1,130 @@
+\documentclass[unicode,11pt,a4paper,oneside,numbers=endperiod,openany]{scrartcl}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinelanguage{json}{
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{gray},
+  stringstyle=\color{blue},
+  keywordstyle=\color{red},
+  numberstyle=\color{purple},
+  breaklines=true,
+  showstringspaces=false,
+  frame=lines,
+  backgroundcolor=\color{lightgray},
+  literate=
+    *{0}{{{\color{purple}0}}}1
+    {1}{{{\color{purple}1}}}1
+    {2}{{{\color{purple}2}}}1
+    {3}{{{\color{purple}3}}}1
+    {4}{{{\color{purple}4}}}1
+    {5}{{{\color{purple}5}}}1
+    {6}{{{\color{purple}6}}}1
+    {7}{{{\color{purple}7}}}1
+    {8}{{{\color{purple}8}}}1
+    {9}{{{\color{purple}9}}}1
+}
+
+\title{Information Retrieval Report 1}
+\author{Eduardo Trabattoni, Martin Lettry}
+
+\begin{document}
+
+
+
+
+\section*{Project Overview:}
+
+Our project involves scraping and indexing data from three websites that specialize in selling football clothing.
+
+\subsection*{Chosen Features:}
+
+For now, we are leaning towards implementing the below features.
+
+\begin{itemize}
+    \item Results Presentation | very likely
+    \item Automatic Recommendation | quite likely
+\end{itemize}
+
+\subsection*{Key Milestones:}
+
+\begin{itemize}
+    \item Identify the three websites for scraping.
+    \item Choose an effective data structure to consolidate information from the three websites.
+    \item Implement scraping and parsing mechanisms for extracting relevant data.
+    \item Select an optimal format for storing and retrieving the scraped data.
+    \item Establish an indexing system for efficient data access.
+    \item Create a frontend interface for searching the indexed data
+\end{itemize}
+
+% ----------------------------
+
+\section*{Project Progress:}
+
+% ----
+
+\subsection*{Overview:}
+
+We've established a GitHub repository for our project, set up a Python virtual environment (venv), and crafted a convenient .sh script to execute the scraper. Additionally, we've compiled a comprehensive README file that provides clear instructions on running the project and contributing to the codebase.
+
+% ----
+
+\subsection*{Websites for scraping:}
+\begin{itemize}
+    \item www.decathlon.co.uk
+    \item www.adidas.ch
+    \item TODO
+\end{itemize}
+
+% ----
+
+\subsection*{Agreed upon data structure:}
+
+Below you will find the agreed-upon data structure which best encompasses all the relevant fields of the above sites.
+
+\begin{lstlisting}[language=json, caption=Agreed-upon JSON Schema]
+{
+    "url": "Your url",
+    "title": "Your Title",
+    "data": "Your Data",
+    "price": "Your Price",
+    "image": "Your Image"
+}
+\end{lstlisting}
+
+% ----
+
+\subsection*{Scraping and parsing progress:}
+
+We have built a pipeline using Scrapy for scraping and parsing the chosen sites. The results are formatted using the above JSON schema.
+
+
+\begin{itemize}
+    \item www.decathlon.co.uk -> 1000 items scraped
+    \item www.adidas.ch -> 1474 items scraped
+\end{itemize}
+
+% ----
+
+\subsection*{Data storing progress:}
+
+Currently, we are storing all the data as JSON; for now, this is sufficient for our needs. Nonetheless, when we start on the indexing part of the project, we may need to begin storing this data using a DBMS. If that is the case, we will most probably use MongoDB as it is very easy to set up and scale, and we have prior experience in using it.
+
+% ----
+
+\subsection*{Indexing progress:}
+
+We are yet to start on the indexing part of the project. We are considering using OpenSearch for the indexing part of the project. OpenSearch is a search and analytics engine built by Amazon Web Services (AWS) as a fork of Elasticsearch. We have some experience using it and figured it would simplify the indexing process a lot.
+
+
+% ----
+
+\subsection*{Frontend GUI:}
+
+We are yet to start on the Fronted part of the project.
+
+
+\end{document}

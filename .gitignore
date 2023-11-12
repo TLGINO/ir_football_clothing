@@ -1,2 +1,10 @@
+# Python
 **/__pycache__/
 .python-version
+
+# Latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
