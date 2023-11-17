@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry} % Adjust the margin values here
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+\lstdefinelanguage{json}{
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{gray},
+  stringstyle=\color{blue},
+  keywordstyle=\color{red},
+  numberstyle=\color{purple},
+  breaklines=true,
+  showstringspaces=false,
+  frame=lines,
+%   backgroundcolor=\color{lightgray},
+  literate=
+    *{0}{{{\color{purple}0}}}1
+    {1}{{{\color{purple}1}}}1
+    {2}{{{\color{purple}2}}}1
+    {3}{{{\color{purple}3}}}1
+    {4}{{{\color{purple}4}}}1
+    {5}{{{\color{purple}5}}}1
+    {6}{{{\color{purple}6}}}1
+    {7}{{{\color{purple}7}}}1
+    {8}{{{\color{purple}8}}}1
+    {9}{{{\color{purple}9}}}1
+}
+
+
+
+\title{Course Project Report}
+\author{Martin Lettry, Eduardo Trabattoni}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\vspace*{-6cm}
+\hspace*{-1,5cm}
+\includegraphics[width=5cm]{Usi_logo.jpeg} 
+\vspace*{3cm}
+
+\section{Project Overview}
+
+Our project aims to design, implement, and evaluate a search engine focused on football clothing by scraping and indexing data from three different websites specializing in this domain. To ensure the success of our project, we have carefully considered the implementation of specific features, with an initial focus on:
+
+\begin{itemize}
+  \item \textbf{Results Presentation}: We plan to present search results in a tabular format to allow users to view multiple results simultaneously. Each table cell will contain relevant information to enhance the user experience.
+
+  \item \textbf{Automatic Recommendation}: We are also considering implementing a recommendation system to suggest similar products based on various attributes like category, description, and price. These recommendations will enhance the user's shopping experience.
+\end{itemize}
+
+\section{Key Milestones}
+
+To achieve our project's objectives, we have outlined key milestones:
+
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{Website Selection}: We have identified three websites to scrape data from: \texttt{www.decathlon.co.uk}, \texttt{www.adidas.ch}, and a third website that we will decide upon soon.
+
+  \item \textbf{Data Structure Definition}: We have established an agreed-upon JSON schema that efficiently captures essential information from the selected websites, including URLs, titles, product data, prices, and images.
+  
+  
+\begin{lstlisting}[language=json, caption=Agreed-upon JSON Schema, label=jsonschema]
+{
+  "url": "URL",
+  "title": "Title",
+  "data": "Data",
+  "price": "Price",
+  "image": "Image"
+}
+\end{lstlisting}
+
+  \item \textbf{Scraping and Parsing}: We have developed a robust data collection pipeline using Scrapy, which has enabled us to scrape and parse data from \texttt{www.decathlon.co.uk} and \texttt{www.adidas.ch}. We have successfully collected a substantial number of items from these websites, with 1000 items from Decathlon and 1474 items from Adidas.
+
+  \item \textbf{Data Storage}: Currently, we are storing the scraped data in JSON format. However, we anticipate the need to transition to a Database Management System (DBMS) as we proceed with the project. MongoDB is a strong candidate for this purpose due to its ease of setup and scalability, combined with our team's prior experience.
+
+  \item \textbf{Indexing System}: We are in the early planning stages of implementing an indexing system. OpenSearch, a search and analytics engine built by Amazon Web Services, is under consideration for its efficiency in indexing. We aim to streamline the indexing process for efficient data access.
+
+  \item \textbf{Frontend Interface}: The development of the frontend interface is on our roadmap, and we plan to initiate this phase shortly. The interface will be essential for providing users with a seamless search experience.
+\end{enumerate}
+
+\section{Project Progress}
+
+At this point, we have made significant progress in the following areas:
+
+\begin{itemize}
+  \item \textbf{GitHub Repository Setup}: We have established a dedicated repository on GitHub for our project, enabling efficient collaboration and version control.
+
+  \item \textbf{Scraping Infrastructure}: We have created a Python virtual environment (venv) and a convenient shell script to execute the scraper. Additionally, we have compiled a comprehensive README file to guide project contributors and users effectively.
+
+  \item \textbf{Data Collection}: Our scraping efforts have resulted in the successful extraction of data from \newline \texttt{www.decathlon.co.uk} and \texttt{www.adidas.ch}. We have collected 1000 items from Decathlon and 1474 items from Adidas.
+
+  \item \textbf{Data Schema}: We have finalized the JSON schema for our data, ensuring that it encompasses all essential fields from the selected websites.
+\end{itemize}
+
+\section{Future Steps}
+
+Our project is progressing on schedule, and we have outlined the following key steps for the future:
+
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{Data Storage}: We anticipate transitioning to a DBMS, such as MongoDB, to efficiently store and manage the collected data.
+
+  \item \textbf{Indexing Implementation}: We plan to begin implementing the indexing system using OpenSearch to optimize data access.
+
+  \item \textbf{Frontend Development}: The development of the frontend user interface will commence shortly to enable users to search and interact with the indexed data seamlessly.
+\end{enumerate}
+
+\section{Conclusion}
+In conclusion, our project is well underway, and we are dedicated to delivering a fully functional search engine for football clothing. Our focus on user experience, with features like results presentation and automatic recommendations, is set to provide a valuable tool for our users. The collaboration between Eduardo Trabattoni and Martin Lettry is going well, and our teamwork is balanced, ensuring efficient progress. We are excited about the project's potential and remain committed to meeting all project milestones with enthusiasm and determination.
+
+\end{document}
