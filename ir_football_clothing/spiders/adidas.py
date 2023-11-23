@@ -28,6 +28,6 @@ class AdidasSpider(scrapy.Spider):
             "url": self.allowed_domains[0] + json_data["link"],
             "title": json_data["name"],
             "data": json_data["color"],
-            "price": json_data["price"],
+            "price": str(json_data["price"]) + " CHF", 
             "image": json_data["image"]["src"],
         }
