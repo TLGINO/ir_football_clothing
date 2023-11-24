@@ -2,6 +2,8 @@
 **/__pycache__/
 .python-version
 
+db.sqlite3
+
 # Latex
 *.aux
 *.fdb_latexmk

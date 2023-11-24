@@ -23,7 +23,7 @@ Install python dependencies:
 pip install -r requirements.txt
 ```
 
-Run the scrape:
+Run the scraper:
 ```sh
 sh run_scraper.sh
 ```
