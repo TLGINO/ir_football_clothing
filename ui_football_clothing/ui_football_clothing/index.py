@@ -10,7 +10,7 @@ class Indexer:
         self.auth = (
             "admin",
             "admin",
-        )  # For testing only. Don't store credentials in code.
+        )
         self.client = self.__init_connection()
         self.__setup_index()
 
