@@ -1,3 +1,42 @@
-* {
-    border: 1px solid red;
-}
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f5f5f5;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    .clothing-item {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 8px;
+        display: inline-block;
+        text-align: left;
+        width: 300px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        color: #555;
+    }
+
+    a {
+        display: block;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }

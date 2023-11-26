@@ -76,11 +76,13 @@ class Indexer:
     def query_document_search(self, q):
         """Query documents by title and data for standard search."""
         query = {
-            "size": 10,
+            "size": 1000,
             "query": {"multi_match": {"query": q, "fields": ["title^2", "data"]}},
         }
         response = self.client.search(body=query, index="football-clothing-index")
-        return response["hits"]["hits"]
+
+        result = [element["_source"] for element in response["hits"]["hits"]]
+        return result
 
     def query_document_price(self, q):
         """Query documents by price for recommendation."""
@@ -89,7 +91,9 @@ class Indexer:
             "query": {"multi_match": {"query": q, "fields": ["price"]}},
         }
         response = self.client.search(body=query, index="football-clothing-index")
-        return response["hits"]["hits"]
+
+        result = [element["_source"] for element in response["hits"]["hits"]]
+        return result
 
 
 if __name__ == "__main__":
