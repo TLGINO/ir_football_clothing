@@ -27,10 +27,18 @@ def handle_get(request, data=None):
 
 
 def search(request):
-    search_params = request.POST.get("search", "")
-    print(search_params)
+    q = request.POST.get("search", None)
+    price_params = request.POST.get("price", None)
+
+    if not q and not price_params:
+        return handle_get(request)
+
+    gte, lte = None, None
+    if price_params:
+        gte, lte = [int(p) if p.isdigit() else None for p in price_params.split("-")]
     indexer = Indexer()
-    data = indexer.query_document_search(search_params)
+    data = indexer.query_document_search(q=q, gte=gte, lte=lte)
+
     return handle_get(request, data)
 
 

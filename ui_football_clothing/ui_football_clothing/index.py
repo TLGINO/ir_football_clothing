@@ -12,7 +12,6 @@ class Indexer:
             "admin",
         )
         self.client = self.__init_connection()
-        self.__setup_index()
 
     def __init_connection(self):
         """Connect to OpenSearch instance."""
@@ -26,7 +25,7 @@ class Indexer:
             ssl_show_warn=False,
         )
 
-    def __setup_index(self):
+    def setup_index(self):
         """Create and populate index."""
         index_name = "football-clothing-index"
         index_body = {
@@ -73,24 +72,39 @@ class Indexer:
         )
         self.client.bulk(bulk_document)
 
-    def query_document_search(self, q):
-        """Query documents by title and data for standard search."""
-        query = {
+    def query_document_search(self, q=None, gte=None, lte=None):
+        """
+        Query documents by title and data for standard search.
+        Optionally add a gte or lte price to the query.
+        """
+        range_query = {"range": {"price": {}}}
+        combined_query = {
             "size": 1000,
-            "query": {"multi_match": {"query": q, "fields": ["title^2", "data"]}},
+            "query": {"bool": {"must": []}},
         }
-        response = self.client.search(body=query, index="football-clothing-index")
 
-        result = [element["_source"] for element in response["hits"]["hits"]]
-        return result
+        if q:
+            combined_query["query"]["bool"]["must"].append(
+                {"multi_match": {"query": q, "fields": ["title^2", "data"]}}
+            )
 
-    def query_document_price(self, q):
-        """Query documents by price for recommendation."""
-        query = {
-            "size": 10,
-            "query": {"multi_match": {"query": q, "fields": ["price"]}},
-        }
-        response = self.client.search(body=query, index="football-clothing-index")
+        if gte or lte:
+            combined_query["query"]["bool"]["must"].append(range_query)
+
+        if gte:
+            range_query["range"]["price"]["gte"] = gte
+
+        if lte:
+            range_query["range"]["price"]["lte"] = lte
+
+        if not q and not gte and not lte:
+            combined_query["query"]["bool"]["must"].append(
+                {"multi_match": {"query": "*", "fields": ["title^2", "data"]}}
+            )
+
+        response = self.client.search(
+            body=combined_query, index="football-clothing-index"
+        )
 
         result = [element["_source"] for element in response["hits"]["hits"]]
         return result
@@ -98,3 +112,4 @@ class Indexer:
 
 if __name__ == "__main__":
     indexer = Indexer()
+    indexer.setup_index()
