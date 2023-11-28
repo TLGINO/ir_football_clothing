@@ -12,8 +12,7 @@ def main(request):
         return handle_get(request)
     elif request.method == "POST":
         return handle_post(request)
-
-    return HttpResponse("Hello, world. You're at the main index.")
+    return HttpResponse("Hello, world.")
 
 
 def handle_get(request, data=None):
@@ -27,17 +26,23 @@ def handle_get(request, data=None):
 
 
 def search(request):
-    q = request.POST.get("search", None)
-    price_params = request.POST.get("price", None)
+    q = request.POST.get("search", "")
+    q_item = request.POST.get("search_item", "")
+    q_brand = request.POST.get("search_brand", "")
+    price_params = request.POST.get("search_price", None)
 
-    if not q and not price_params:
+    q_total = f"{q} {q_item} {q_brand}".strip()
+
+    print("Q PRE _" + q_total + "_")
+    if not q_total and not price_params:
         return handle_get(request)
 
     gte, lte = None, None
     if price_params:
         gte, lte = [int(p) if p.isdigit() else None for p in price_params.split("-")]
+
     indexer = Indexer()
-    data = indexer.query_document_search(q=q, gte=gte, lte=lte)
+    data = indexer.query_document_search(q=q_total, gte=gte, lte=lte)
 
     return handle_get(request, data)
 

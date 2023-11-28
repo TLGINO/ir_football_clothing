@@ -1,6 +1,8 @@
 #!/bin/bash
 
-rm 'data/!(.gitkeep)'
+# Removes all files in the /data dir except .gitkeep
+find data -type f ! -name ".gitkeep" -exec rm -v {} \;
+
 
 echo "Scraping data for Adidas"
 scrapy crawl adidas -o data/adidas.json

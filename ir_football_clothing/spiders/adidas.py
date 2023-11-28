@@ -23,11 +23,12 @@ class AdidasSpider(scrapy.Spider):
 
     def parse_second_level(self, response):
         json_data = response.json()
+        # json.dump(json_data, open("t.json", "w+"))
 
         yield {
             "url": self.allowed_domains[0] + json_data["link"],
             "title": json_data["name"],
-            "data": json_data["color"],
+            "data": "adidas " + json_data["color"],
             "price": json_data["price"],
             "image": json_data["image"]["src"],
         }

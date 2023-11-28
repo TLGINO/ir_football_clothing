@@ -26,8 +26,7 @@ class Fixture:
                 }
                 all_data.append(template)
 
-        with open("ui_football_clothing/fixtures/data.json", "w+") as f:
-            json.dump(all_data, f)
+        json.dump(all_data, open("ui_football_clothing/fixtures/data.json", "w+"))
         print("Fixtures data created successfully")
 
 

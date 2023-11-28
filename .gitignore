@@ -2,7 +2,15 @@
 **/__pycache__/
 .python-version
 
+# Migration files for DB
+ui_football_clothing/ui_football_clothing/migrations/
+
+# Local DB
 db.sqlite3
+
+# Local data storage files
+*.csv
+*.json
 
 # Latex
 *.aux

@@ -9,19 +9,14 @@
 <body>
 
     <h1>Football Clothing</h1>
+
     <form method="post" action="{% url 'search' %}">
         {% csrf_token %}
         <label for="search">Search:</label>
         <input type="text" id="search" name="search">
-        <button type="submit">Search</button>
-    </form>
 
-
-    <h2>Filter by Category:</h2>
-    <form method="post" action="{% url 'search' %}">
-        {% csrf_token %}
-        <label for="search">Category:</label>
-        <select id="search" name="search">
+        <label for="search_item">Category:</label>
+        <select id="search_item" name="search_item">
             <option value="">All</option>
             <option value="top">Tops</option>
             <option value="shirt">Shirts</option>
@@ -31,18 +26,10 @@
             <option value="sock">Socks</option>
         </select>
 
-        <label for="price">Price Range:</label>
-        <select id="price" name="price">
-            <option value="">Any</option>
-            <option value="0-20">0 CHF - 20 CHF</option>
-            <option value="21-50">21 CHF - 50 CHF</option>
-            <option value="51-100">51 CHF - 100 CHF</option>
-            <option value="51-max">100 CHF - max</option>
-        </select>
 
 
-        <label for="brand">Brand:</label>
-        <select id="brand" name="brand">
+        <label for="search_brand">Brand:</label>
+        <select id="search_brand" name="search_brand">
             <option value="">Any</option>
             <option value="adidas">Adidas</option>
             <option value="nike">Nike</option>
@@ -54,13 +41,22 @@
         </select>
 
 
+        <label for="search_price">Price Range:</label>
+        <select id="search_price" name="search_price">
+            <option value="">Any</option>
+            <option value="0-20">0 CHF - 20 CHF</option>
+            <option value="21-50">21 CHF - 50 CHF</option>
+            <option value="51-100">51 CHF - 100 CHF</option>
+            <option value="101-max">100 CHF - max</option>
+        </select>
+
+
         <button type="submit">Apply Filters</button>
     </form>
 
 
     {% if data %}
     {% for item in data %}
-
     <div class="clothing-item">
         <img src="{{ item.image }}" alt="{{ item.title }}">
         <h2>{{ item.title }}</h2>
@@ -70,17 +66,6 @@
     </div>
 
     {% endfor %}
-    {% endif %}
-
-
-    {% if latest_question_list %}
-    <ul>
-        {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No polls are available.</p>
     {% endif %}
 
 </body>

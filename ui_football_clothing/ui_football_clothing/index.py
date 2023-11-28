@@ -1,115 +1,93 @@
 import json
 
-from opensearchpy import OpenSearch
+import pandas as pd
+import pyterrier as pt
 
 
 class Indexer:
     def __init__(self):
-        self.host = "localhost"
-        self.port = 9200
-        self.auth = (
-            "admin",
-            "admin",
-        )
-        self.client = self.__init_connection()
+        if not pt.started():
+            pt.init()
 
-    def __init_connection(self):
-        """Connect to OpenSearch instance."""
-        return OpenSearch(
-            hosts=[{"host": self.host, "port": self.port}],
-            http_compress=True,  # enables gzip compression for request bodies
-            http_auth=self.auth,
-            use_ssl=True,
-            verify_certs=False,
-            ssl_assert_hostname=False,
-            ssl_show_warn=False,
+        self.index_path = "./football-clothing-index"
+        self.data_path = "./data/data.csv"
+        self.indexer = pt.DFIndexer(
+            index_path=self.index_path, overwrite=True, verbose=True
         )
+        self.indexref = None
 
     def setup_index(self):
         """Create and populate index."""
-        index_name = "football-clothing-index"
-        index_body = {
-            "settings": {"number_of_shards": 1, "number_of_replicas": 1},
-            "mappings": {
-                "properties": {
-                    "url": {"type": "text"},
-                    "title": {"type": "text"},
-                    "data": {"type": "text"},
-                    "price": {"type": "integer"},
-                    "image": {"type": "text"},
-                }
-            },
-        }
-        try:
-            self.client.indices.create(index_name, body=index_body)
-            print("Index Created!")
 
-            print("Bulk Indexing Data (1/3):")
-            self.index_document_bulk("../data/adidas.json")
+        print("Bulk Indexing Data:")
 
-            print("Bulk Indexing Data (2/3):")
-            self.index_document_bulk("../data/decathlon.json")
+        adidas_df = pd.read_json("../data/adidas.json")
+        decathlon_df = pd.read_json("../data/decathlon.json")
+        sports_direct_df = pd.read_json("../data/sports_direct.json")
 
-            print("Bulk Indexing Data (3/3):")
-            self.index_document_bulk("../data/sports_direct.json")
-            print("Done")
-
-        except Exception as e:
-            print("Error creating index, does index already exist?")
-            print(e)
-
-    def index_document_bulk(self, document_path):
-        """Index a json document."""
-        data = json.load(open(document_path))
-
-        bulk_document = "".join(
+        data_df = pd.concat(
             [
-                '{ "index" : { "_index" : "football-clothing-index" } } \n '
-                + json.dumps(d)
-                + " \n "
-                for d in data
+                adidas_df,
+                decathlon_df,
+                sports_direct_df,
             ]
         )
-        self.client.bulk(bulk_document)
+
+        data_df["docno"] = [str(i + 1) for i in range(len(data_df))]
+
+        self.indexref = self.indexer.index(
+            data_df["title"],
+            data_df["data"],
+            data_df["docno"],
+        )
+
+        data_df.to_csv(self.data_path)
+
+        print("Data written to file.")
+
+    def get_index_ref(self):
+        return pt.IndexFactory.of(f"{self.index_path}/data.properties")
 
     def query_document_search(self, q=None, gte=None, lte=None):
         """
         Query documents by title and data for standard search.
         Optionally add a gte or lte price to the query.
         """
-        range_query = {"range": {"price": {}}}
-        combined_query = {
-            "size": 1000,
-            "query": {"bool": {"must": []}},
-        }
+        query = [[str(i + 1), e] for i, e in enumerate(q.split(" "))]
+        print(query)
+        print(gte)
+        print(lte)
 
-        if q:
-            combined_query["query"]["bool"]["must"].append(
-                {"multi_match": {"query": q, "fields": ["title^2", "data"]}}
-            )
 
-        if gte or lte:
-            combined_query["query"]["bool"]["must"].append(range_query)
+        topics = pd.DataFrame(query, columns=["qid", "query"])
 
+        self.indexref = self.indexref or self.get_index_ref()
+
+        search_result_df = pt.BatchRetrieve(self.indexref).transform(topics)
+        search_result_df["docno"] = search_result_df["docno"].astype(int)
+
+        data_df = pd.read_csv(self.data_path)
+
+        # Inner join the results
+        result_df = data_df[data_df["docno"].isin(search_result_df["docno"])]
+
+        if len(result_df) == 0:
+            result_df = data_df.copy()
+        
         if gte:
-            range_query["range"]["price"]["gte"] = gte
-
+            result_df = result_df[result_df["price"] >= gte]
         if lte:
-            range_query["range"]["price"]["lte"] = lte
+            result_df = result_df[result_df["price"] <= lte]
 
-        if not q and not gte and not lte:
-            combined_query["query"]["bool"]["must"].append(
-                {"multi_match": {"query": "*", "fields": ["title^2", "data"]}}
-            )
+        result_df = result_df[["url", "title", "data", "price", "image"]]
 
-        response = self.client.search(
-            body=combined_query, index="football-clothing-index"
-        )
+        data = json.loads(result_df.to_json(orient="records"))
 
-        result = [element["_source"] for element in response["hits"]["hits"]]
-        return result
+        return data
 
 
 if __name__ == "__main__":
     indexer = Indexer()
     indexer.setup_index()
+    # res = indexer.query_document_search(q="shirt")
+    # print(res)

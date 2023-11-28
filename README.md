@@ -14,13 +14,13 @@ pyenv virtualenv ir_football_clothing
 Make sure it is activated, it should return something similar to this:
 
 ```sh
-pip -V
+pip3 -V
 pip 23.2.1 from /home/martin/.pyenv/versions/ir_football_clothing/lib/python3.10/site-packages/pip (python 3.10)
 ```
 
 Install python dependencies:
 ```sh
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 Run the scraper:
@@ -28,7 +28,13 @@ Run the scraper:
 sh run_scraper.sh
 ```
 
-The resulting .json data will be store in /data/[site_name].json
+The resulting .json data will be stored in /data/[site_name].json
+
+Run the site:
+```sh
+sh run_ui.sh
+```
+
 
 ### How to contribute:
 
