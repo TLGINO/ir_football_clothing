@@ -2,6 +2,9 @@
 **/__pycache__/
 .python-version
 
+# Indexing stuff
+ui_football_clothing/football-clothing-index/
+
 # Migration files for DB
 ui_football_clothing/ui_football_clothing/migrations/
 

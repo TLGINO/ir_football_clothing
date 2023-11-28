@@ -36,8 +36,7 @@ class Indexer:
         data_df["docno"] = [str(i + 1) for i in range(len(data_df))]
 
         self.indexref = self.indexer.index(
-            data_df["title"],
-            data_df["data"],
+            data_df["title"] + " " + data_df["data"],
             data_df["docno"],
         )
 
@@ -89,5 +88,6 @@ class Indexer:
 if __name__ == "__main__":
     indexer = Indexer()
     indexer.setup_index()
-    # res = indexer.query_document_search(q="shirt")
+    # res = indexer.query_document_search(q="nike")
     # print(res)
+    # print(len(res))
