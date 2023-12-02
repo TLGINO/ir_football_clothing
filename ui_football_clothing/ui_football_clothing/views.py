@@ -10,8 +10,6 @@ from .models import Item
 def main(request):
     if request.method == "GET":
         return handle_get(request)
-    elif request.method == "POST":
-        return handle_post(request)
     return HttpResponse("Hello, world.")
 
 
@@ -45,7 +43,3 @@ def search(request):
     data = indexer.query_document_search(q=q_total, gte=gte, lte=lte)
 
     return handle_get(request, data)
-
-
-def handle_post(request):
-    return handle_get(request)

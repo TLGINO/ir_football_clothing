@@ -7,6 +7,23 @@
 </head>
 
 <body>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <script>
+        // JavaScript for toggling dark mode
+        const body = document.body;
+        const h1s = document.getElementsByTagName('h1');
+        const h2s = document.getElementsByTagName('h2');
+
+        function toggleDarkMode() {
+            for (let i = 0; i < h2s.length; i++) {
+                h2s[i].classList.toggle('dark-mode');
+            }
+            h1s[0].classList.toggle('dark-mode');
+            body.classList.toggle('dark-mode');
+        }
+    </script>
+
 
     <h1>Football Clothing</h1>
 
