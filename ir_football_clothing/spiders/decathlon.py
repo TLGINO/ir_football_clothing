@@ -20,7 +20,7 @@ class DecathlonSpider(scrapy.Spider):
         for griditem in griditems:
             item_url = griditem.css("div div div a::attr(href)").get()
             item_name = griditem.css("span.vh::text").get()
-            item_brand = griditem.css("strong::text").get()
+            item_brand = griditem.css("strong::text").get().upper()
             item_price = round(
                 self.currency_converter.convert(
                     float(

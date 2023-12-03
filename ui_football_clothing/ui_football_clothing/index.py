@@ -57,7 +57,6 @@ class Indexer:
         print(gte)
         print(lte)
 
-
         topics = pd.DataFrame(query, columns=["qid", "query"])
 
         self.indexref = self.indexref or self.get_index_ref()
@@ -72,13 +71,16 @@ class Indexer:
 
         if len(result_df) == 0:
             result_df = data_df.copy()
-        
+
         if gte:
             result_df = result_df[result_df["price"] >= gte]
         if lte:
             result_df = result_df[result_df["price"] <= lte]
 
-        result_df = result_df[["url", "title", "data", "price", "image"]]
+        # Add id collumn for frontend item redirection
+        result_df["id"] = result_df["docno"].astype(int)
+
+        result_df = result_df[["url", "title", "data", "price", "image", "id"]]
 
         data = json.loads(result_df.to_json(orient="records"))
 

@@ -1,33 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
 
 <head>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
     <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
-    <script>
-        // JavaScript for toggling dark mode
-        const body = document.body;
-        const h1s = document.getElementsByTagName('h1');
-        const h2s = document.getElementsByTagName('h2');
-
-        function toggleDarkMode() {
-            for (let i = 0; i < h2s.length; i++) {
-                h2s[i].classList.toggle('dark-mode');
-            }
-            h1s[0].classList.toggle('dark-mode');
-            body.classList.toggle('dark-mode');
-        }
-    </script>
-
-
     <h1>Football Clothing</h1>
 
-    <form method="post" action="{% url 'search' %}">
+    <form method="get" action="{% url 'search' %}">
         {% csrf_token %}
         <label for="search">Search:</label>
         <input type="text" id="search" name="search">
@@ -68,22 +52,89 @@
         </select>
 
 
+        <label for="number_results">Number of Results per Page:</label>
+        <select id="number_results" name="number_results">
+            <option value=25>25</option>
+            <option value=50>50</option>
+            <option value=100>100</option>
+        </select>
+
         <button type="submit">Apply Filters</button>
     </form>
 
+    {{ data|json_script:"data" }}
 
-    {% if data %}
-    {% for item in data %}
-    <div class="clothing-item">
-        <img src="{{ item.image }}" alt="{{ item.title }}">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.data }}</p>
-        <p>Price: {{ item.price }} CHF</p>
-        <a href="https://{{ item.url }}" target="_blank">View Details</a>
-    </div>
+    <script>
+        // JavaScript for toggling dark mode
+        const body = document.body;
+        const h1s = document.getElementsByTagName('h1');
+        const h2s = document.getElementsByTagName('h2');
 
-    {% endfor %}
-    {% endif %}
+        function toggleDarkMode() {
+            for (let i = 0; i < h2s.length; i++) {
+                h2s[i].classList.toggle('dark-mode');
+            }
+            h1s[0].classList.toggle('dark-mode');
+            body.classList.toggle('dark-mode');
+        }
+
+
+        // JavaScript for loading the items
+        var data = JSON.parse(document.getElementById('data').textContent);
+        data = JSON.parse(data); // This is needed twice for some reason
+
+        var number_results = parseInt('{{ number_results|escapejs }}');
+
+
+        for (let i = 0; (i < number_results) && (i < data.length); i++) {
+            document.write(`
+            <div class="clothing-item">
+                <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
+                <br>
+                ${data[i].title.substring(0, 30)}...
+                <p>${data[i].data}</p>
+                <p>Price: ${data[i].price} CHF</p>
+                <a href="/item/?id=${data[i].id}" target="_blank">View Details</a>
+            </div>
+            `);
+        }
+
+        var start_index = number_results;
+
+        if (start_index < data.length) {
+            document.write(`
+            <button id="next-page" style="display: block;" onclick="loadMore()">Load More</button>
+            `);
+        }
+
+
+        function loadMore() {
+            let all_items = document.getElementsByClassName('clothing-item');
+            let pos = 0;
+
+
+            for (let i = start_index; (i < start_index + number_results) && (i < data.length); i++) {
+                all_items[pos].innerHTML = `
+                <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
+                <br>
+                ${data[i].title.substring(0, 30)}...
+                <p>${data[i].data}</p>
+                <p>Price: ${data[i].price} CHF</p>
+                <a href="/item/?id=${data[i].id}" target="_blank">View Details</a>
+                `;
+                pos++;
+            }
+            start_index += number_results;
+
+            var next_page_button = document.getElementById('next-page');
+            if (start_index >= data.length) {
+                next_page_button.style.display = 'none';
+            }
+        }
+
+    </script>
+
+
 
 </body>
 

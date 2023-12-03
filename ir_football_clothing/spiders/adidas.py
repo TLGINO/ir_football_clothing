@@ -28,7 +28,7 @@ class AdidasSpider(scrapy.Spider):
         yield {
             "url": self.allowed_domains[0] + json_data["link"],
             "title": json_data["name"],
-            "data": "adidas " + json_data["color"],
+            "data": "ADIDAS",
             "price": json_data["price"],
             "image": json_data["image"]["src"],
         }

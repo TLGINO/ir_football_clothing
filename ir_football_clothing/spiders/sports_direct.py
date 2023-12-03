@@ -16,7 +16,7 @@ class SportsDirectSpider(scrapy.Spider):
         for item in items:
             item_url = item.css("::attr(li-url)").get()
             item_name = item.css("::attr(li-name)").get()
-            item_brand = item.css("::attr(li-brand)").get()
+            item_brand = item.css("::attr(li-brand)").get().upper()
             item_price = round(
                 self.currency_converter.convert(
                     float(item.css("::attr(li-price)").get().split(" ")[0]),
