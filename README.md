@@ -9,6 +9,7 @@ Create a python virtual env, here I am using pyenv:
 
 ```sh
 pyenv virtualenv ir_football_clothing
+
 ```
 
 Make sure it is activated, it should return something similar to this:

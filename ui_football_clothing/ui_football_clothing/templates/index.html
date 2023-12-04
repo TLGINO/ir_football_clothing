@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button onclick="toggleDarkMode(true)">Toggle Dark Mode</button>
 
     <h1>Football Clothing</h1>
 
@@ -59,6 +59,9 @@
             <option value=100>100</option>
         </select>
 
+
+        <br>
+        <br>
         <button type="submit">Apply Filters</button>
     </form>
 
@@ -70,27 +73,41 @@
         const h1s = document.getElementsByTagName('h1');
         const h2s = document.getElementsByTagName('h2');
 
-        function toggleDarkMode() {
+        
+        var is_dark_mode = localStorage.getItem('is_dark_mode') == 1;
+        if (is_dark_mode){
+            toggleDarkMode();
+        }
+        function toggleDarkMode(is_clicked) {
+            if (is_clicked){
+
+                if(localStorage.getItem('is_dark_mode') == 1){
+                    localStorage.setItem("is_dark_mode", 0);
+                } else{
+                    localStorage.setItem("is_dark_mode", 1);
+                }
+            }
             for (let i = 0; i < h2s.length; i++) {
                 h2s[i].classList.toggle('dark-mode');
             }
             h1s[0].classList.toggle('dark-mode');
             body.classList.toggle('dark-mode');
         }
-
+        
 
         // JavaScript for loading the items
         var data = JSON.parse(document.getElementById('data').textContent);
         data = JSON.parse(data); // This is needed twice for some reason
 
         var number_results = parseInt('{{ number_results|escapejs }}');
-
-
+                    
+        // hier fix the no change color probl after <br>
         for (let i = 0; (i < number_results) && (i < data.length); i++) {
             document.write(`
             <div class="clothing-item">
                 <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
                 <br>
+                
                 ${data[i].title.substring(0, 30)}...
                 <p>${data[i].data}</p>
                 <p>Price: ${data[i].price} CHF</p>
@@ -113,11 +130,13 @@
             let pos = 0;
 
 
+            // hier fix the no change color probl after <br>
             for (let i = start_index; (i < start_index + number_results) && (i < data.length); i++) {
                 all_items[pos].innerHTML = `
                 <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
                 <br>
                 ${data[i].title.substring(0, 30)}...
+                
                 <p>${data[i].data}</p>
                 <p>Price: ${data[i].price} CHF</p>
                 <a href="/item/?id=${data[i].id}" target="_blank">View Details</a>

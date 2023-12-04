@@ -9,21 +9,20 @@
 <body>
 
     <h1>Item Info</h1>
-
     {% if item %}
     <div class="clothing-item">
         <img src="{{ item.image }}" alt="{{ item.title }}" height="256" width="256">
         <h2>{{ item.title|truncatechars:30 }}</h2>
         <p>{{ item.data }}</p>
         <p>Price: {{ item.price }} CHF</p>
-        <a href="https://{{ item.url }}" target="_blank">View Details</a>
+        <a href="https://{{ item.url }}" target="_blank">Go to Shop</a>
     </div>
     {% endif %}
 
     <br>
     <h1>You may also like:</h1>
 
-
+    <!-- TODO fai che se clicchi immagine apre link -->
     {% if data %}
     {% for d in data %}
     <div class="clothing-item">
@@ -31,7 +30,9 @@
         <h2>{{ d.title|truncatechars:30 }}</h2>
         <p>{{ d.data }}</p>
         <p>Price: {{ d.price }} CHF</p>
-        <a href="https://{{ d.url }}" target="_blank">View Details</a>
+        <a href="/item/?id={{d.id}}" target="_blank">View Details</a>
+        <a href="https://{{ d.url }}" target="_blank">Go to Shop</a>
+
     </div>
     {% endfor %}
     {% endif %}
