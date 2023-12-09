@@ -40,9 +40,14 @@ def search(request):
         gte, lte = [int(p) if p.isdigit() else None for p in price_params.split("-")]
 
     indexer = Indexer()
-    data = indexer.query_document_search(q=q_total, gte=gte, lte=lte)
+    try:
+        data = indexer.query_document_search(q=q_total, gte=gte, lte=lte)
 
-    return handle_get(request, data=data, number_results=number_results)
+        return handle_get(request, data=data, number_results=number_results)
+
+    except Exception as e:
+        print(e)
+        return handle_get(request)
 
 
 def item(request):
