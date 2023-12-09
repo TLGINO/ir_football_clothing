@@ -105,12 +105,14 @@
         for (let i = 0; (i < number_results) && (i < data.length); i++) {
             document.write(`
             <div class="clothing-item">
-                <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
-                <br>
                 
-                ${data[i].title.substring(0, 30)}...
-                <p>${data[i].data}</p>
-                <p>Price: ${data[i].price} CHF</p>
+
+                    <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
+                    <br>
+                    
+                    ${data[i].title.substring(0, 30)}...
+                    <p>${data[i].data}</p>
+                    <p>Price: ${data[i].price} CHF</p>
                 <a href="/item/?id=${data[i].id}" target="_blank">View Details</a>
             </div>
             `);
@@ -133,12 +135,14 @@
             // hier fix the no change color probl after <br>
             for (let i = start_index; (i < start_index + number_results) && (i < data.length); i++) {
                 all_items[pos].innerHTML = `
-                <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256">
+
+                <img src="${data[i].image}" alt="${data[i].title}" height="256" width="256"> 
                 <br>
                 ${data[i].title.substring(0, 30)}...
                 
                 <p>${data[i].data}</p>
                 <p>Price: ${data[i].price} CHF</p>
+                
                 <a href="/item/?id=${data[i].id}" target="_blank">View Details</a>
                 `;
                 pos++;

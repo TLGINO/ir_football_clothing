@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+    <button onclick="toggleDarkMode(true)">Toggle Dark Mode</button>
     <h1>Item Info</h1>
     {% if item %}
     <div class="clothing-item">
@@ -26,16 +26,58 @@
     {% if data %}
     {% for d in data %}
     <div class="clothing-item">
-        <img src="{{ d.image }}" alt="{{ d.title }}" height="256" width="256">
-        <h2>{{ d.title|truncatechars:30 }}</h2>
-        <p>{{ d.data }}</p>
-        <p>Price: {{ d.price }} CHF</p>
-        <a href="/item/?id={{d.id}}" target="_blank">View Details</a>
+        <a href="/item/?id={{d.id}}" target="_blank">
+            <img src="{{ d.image }}" alt="{{ d.title }}" height="256" width="256">
+    
+            <h2>{{ d.title|truncatechars:30 }}</h2>
+            <p>{{ d.data }}</p>
+            <p>Price: {{ d.price }} CHF</p>
+        </a>
+        <!-- <a href="/item/?id={{d.id}}" target="_blank">View Details</a> -->
         <a href="https://{{ d.url }}" target="_blank">Go to Shop</a>
-
+    
     </div>
+    
     {% endfor %}
     {% endif %}
+
+    <script>
+        // JavaScript for toggling dark mode
+        const body = document.body;
+        const h1s = document.getElementsByTagName('h1');
+        const h2s = document.getElementsByTagName('h2');
+
+        
+        var is_dark_mode = localStorage.getItem('is_dark_mode') == 1;
+        if (is_dark_mode){
+            toggleDarkMode();
+        }
+        
+        function toggleDarkMode(is_clicked) {
+            if (is_clicked){
+
+                if(localStorage.getItem('is_dark_mode') == 1){
+                    localStorage.setItem("is_dark_mode", 0);
+                } else{
+                    localStorage.setItem("is_dark_mode", 1);
+                }
+            }
+            for (let i = 0; i < h2s.length; i++) {
+                h2s[i].classList.toggle('dark-mode');
+            }
+            h1s[0].classList.toggle('dark-mode');
+            body.classList.toggle('dark-mode');
+        }
+        
+
+      
+
+        
+
+
+          
+
+    </script>
 
 </body>
 
