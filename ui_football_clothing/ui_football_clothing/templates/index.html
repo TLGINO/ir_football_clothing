@@ -73,17 +73,17 @@
         const h1s = document.getElementsByTagName('h1');
         const h2s = document.getElementsByTagName('h2');
 
-        
+
         var is_dark_mode = localStorage.getItem('is_dark_mode') == 1;
-        if (is_dark_mode){
+        if (is_dark_mode) {
             toggleDarkMode();
         }
         function toggleDarkMode(is_clicked) {
-            if (is_clicked){
+            if (is_clicked) {
 
-                if(localStorage.getItem('is_dark_mode') == 1){
+                if (localStorage.getItem('is_dark_mode') == 1) {
                     localStorage.setItem("is_dark_mode", 0);
-                } else{
+                } else {
                     localStorage.setItem("is_dark_mode", 1);
                 }
             }
@@ -93,14 +93,14 @@
             h1s[0].classList.toggle('dark-mode');
             body.classList.toggle('dark-mode');
         }
-        
+
 
         // JavaScript for loading the items
         var data = JSON.parse(document.getElementById('data').textContent);
         data = JSON.parse(data); // This is needed twice for some reason
 
         var number_results = parseInt('{{ number_results|escapejs }}');
-                    
+
         // hier fix the no change color probl after <br>
         for (let i = 0; (i < number_results) && (i < data.length); i++) {
             document.write(`
@@ -125,6 +125,14 @@
             <button id="next-page" style="display: block;" onclick="loadMore()">Load More</button>
             `);
         }
+        if (start_index > 1) {
+
+            document.write(`
+                <button id="go-back" style="display: none;" onclick="goBack()">Go Back</button>
+            `);
+        }
+
+
 
 
         function loadMore() {
@@ -147,17 +155,39 @@
                 `;
                 pos++;
             }
+
+            var go_back_button = document.getElementById('go-back');
+            if (start_index <= 0) {
+                go_back_button.style.display = 'none';
+            } else {
+                go_back_button.style.display = 'block';
+
+            }
             start_index += number_results;
 
             var next_page_button = document.getElementById('next-page');
             if (start_index >= data.length) {
                 next_page_button.style.display = 'none';
             }
+
         }
 
+
+        function goBack() {
+            start_index = start_index - number_results - number_results; // Move back by the number of results
+            loadMore(); // Call loadMore to display the previous set of items
+
+            // Hide "Go Back" button if we are at the beginning
+            var go_back_button = document.getElementById('go-back');
+            if (start_index <= 0) {
+                go_back_button.style.display = 'none';
+            }
+        }
+
+
+
+
     </script>
-
-
 
 </body>
 
