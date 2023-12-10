@@ -17,7 +17,7 @@ def main(request):
 def handle_get(request, data=None, number_results=25):
     if not data:
         data = list(Item.objects.all().values())
-
+        data.reverse()
     context = {"data": json.dumps(data), "number_results": number_results}
     return render(request, "index.html", context)
 
