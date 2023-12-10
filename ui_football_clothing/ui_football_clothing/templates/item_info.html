@@ -12,7 +12,7 @@
     {% if item %}
     <div class="clothing-item">
         <img src="{{ item.image }}" alt="{{ item.title }}" height="256" width="256">
-        <h2>{{ item.title|truncatechars:30 }}</h2>
+        <h2 style="color: black;">{{ item.title }}</h2>
         <p>{{ item.data }}</p>
         <p>Price: {{ item.price }} CHF</p>
         <a href="https://{{ item.url }}" target="_blank">Go to Shop</a>
@@ -22,18 +22,16 @@
     <br>
     <h1>You may also like:</h1>
 
-    <!-- TODO fai che se clicchi immagine apre link -->
     {% if data %}
     {% for d in data %}
     <div class="clothing-item">
         <a href="/item/?id={{d.id}}" target="_blank">
             <img src="{{ d.image }}" alt="{{ d.title }}" height="256" width="256">
     
-            <h2>{{ d.title|truncatechars:30 }}</h2>
+            <h4 style="color: black;">{{ d.title|truncatechars:30 }}</h4>
             <p>{{ d.data }}</p>
             <p>Price: {{ d.price }} CHF</p>
         </a>
-        <!-- <a href="/item/?id={{d.id}}" target="_blank">View Details</a> -->
         <a href="https://{{ d.url }}" target="_blank">Go to Shop</a>
     
     </div>
@@ -52,7 +50,7 @@
         if (is_dark_mode){
             toggleDarkMode();
         }
-        
+
         function toggleDarkMode(is_clicked) {
             if (is_clicked){
 
