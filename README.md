@@ -1,3 +1,8 @@
+### IR Football Clothing Project
+
+Project developed during the Information Retrival Course.
+Objective of the project was to scrape 3 different websites for football clothing and then display the scraped data on our own website, implementing search functions / indexing on said data.
+
 ### Useful links:
 
 [Scrapy Tutorial](https://docs.scrapy.org/en/latest/intro/tutorial.html)
